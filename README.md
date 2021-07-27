@@ -36,6 +36,7 @@ Some papers of Google Research that have used TPU in TF 2.X:
  * [Big Bird: Transformers for Longer Sequences](https://github.com/google-research/bigbird).
 ### Pytorch
 You can use TPU by [torch_xla package](https://github.com/pytorch/xla) or [accelerate](https://huggingface.co/docs/accelerate/):
+
  torch_xla: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix `no_trainer`, such as `run_glue.py`.
  accelerate: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix `no_trainer`, such as `run_glue_no_trainer.py`
 Also, in Pytorch, every input sequence should be the same length. 
