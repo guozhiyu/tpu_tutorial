@@ -6,7 +6,7 @@
  * Free: If you have Google TPU research cloud membership, it is totally free.
 
 ## Disadvantage of Using TPU
- * Not easy to use for TF 1.X and Pytorch, only easy for TF 2.X 
+ * Not easy to use for TF 1.X and Pytorch, only easy for TF 2.X, I don't know about JAX/Flax.
 
 ## How to use it freely:
 I find there are five feasible ways:
@@ -30,6 +30,10 @@ When using TPU in TF 2.X, please keep in mind that:
  * Every input sequence should be the same length.
  * Don't use `tf.keras.layers.Embedding`, please refer to [HuggingFace TFBertEmbeddings](https://github.com/huggingface/transformers/blob/master/src/transformers/models/bert/modeling_tf_bert.py#L132).
 
+Some papers of Google Research that have used TPU in TF 2.X:
+ * [Colorization Transformer](https://github.com/google-research/google-research/tree/master/coltran)
+ * [On the Transformer Growth for Progressive BERT Training](https://github.com/google-research/google-research/tree/master/grow_bert)
+ * [Big Bird: Transformers for Longer Sequences](https://github.com/google-research/bigbird).
 ### Pytorch
 You can use TPU by [torch_xla package](https://github.com/pytorch/xla) or [accelerate](https://huggingface.co/docs/accelerate/):
  torch_xla: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix `no_trainer`, such as `run_glue.py`.
