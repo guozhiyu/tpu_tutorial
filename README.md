@@ -1,7 +1,7 @@
 # TPU Tutorial
 
 ## Advantage of Using TPU
- * Efficiency: TPU v3-8 (the smallest TPU which has 8 cores) is faster than 8 V100 GPUs that have the same amount of memory as shown in (https://github.com/allenai/tpu_pretrain). 
+ * Efficiency: TPU v3-8 (the smallest TPU which has 8 cores, 16GB*8) is faster than 8 V100 GPUs that have the same amount of memory as shown in (https://github.com/allenai/tpu_pretrain). 
  * Convenient: Unlike using GPU in the school, you don't need to compete for computation resources with other members, then you can start the experiment any time.
  * Free: If you have Google TPU research cloud membership, it is totally free.
 
