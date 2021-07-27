@@ -9,16 +9,33 @@
  * Not easy to use for TF 1.X and Pytorch, only easy for TF 2.X 
 
 ## How to use it freely:
+I find there are five feasible ways:
  * Apply for Google TPU Research Cloud membership (I don't know the difficulty) (https://sites.research.google/trc/).
- * Perticipate in the competetion organized by Google. (I participated a Kaggle competition organized by Google in Dec 2019, after the competition, I can use TPU freely in my own research, I can still use it now).
- * Use the free TPU in Colab/Kaggle.
+ * (Highly recommanded) Perticipate in the competetion organized by Google. (I participated a Kaggle competition organized by Google in Dec 2019, after the competition, I can use TPU freely in my own research, I can still use it now, I can run up to 5 TPU-v3 at the same time).
+ * Use the free TPU in Colab/Kaggle notebook.
  * Use Google Cloud 300$ free trial (If you are new customor of Google Cloud)
  * Apply for [Google Cloud Research Credits](https://edu.google.com/programs/credits/research/?modal_active=none) (only for doctoral student).
 
 ## Code example
-Actually, you can choose TF, Pytorch, and JAX/Flax for using TPU, I prefer TF 2.X, I will show some useful code example for TF 2.X and Pytorch. If you use TPU in Goolge Cloud Platform, please read the [Cloud TPU document] (https://cloud.google.com/tpu/docs) at first.
+Actually, you can choose TF, Pytorch, and JAX/Flax for using TPU, I prefer TF 2.X, I will show some useful code example for TF 2.X and Pytorch. If you use TPU in Goolge Cloud Platform, please read the [Cloud TPU document] (https://cloud.google.com/tpu/docs) at first. It is highly recommanded to use the newly released [TPU Virtual Machine](https://cloud.google.com/blog/products/compute/introducing-cloud-tpu-vms).
 
 ### TF 2.X
-When I started to use TPU, it was the summer of 2019, I could use TPU only in TF 1.X, I just tried to run the fintuning code in BERT/XLNET official repository. I found it was really hard to use TPU at that time. Fortunatelly, at the end of 2019, TPU support for TF 2.X was realeased, it became easy to use TPU. Since TF 2.X was just released, it was unstable, I just used it in the Kaggle competiton, not in the research. This year, I found Google Reasearch have implemented many research papers using TF 2.X, I think it is the right time to use TF 2.X in the research now.
+When I started to use TPU, it was the summer of 2019, I could use TPU only in TF 1.X, I just tried to run the fintuning code in BERT/XLNET official repository. I found it was really hard to use TPU in TF 1.X. Fortunatelly, at the end of 2019, TPU support for TF 2.X was realeased, it became easy to use TPU. Since TF 2.X was just released, it was unstable, I just used it in the Kaggle competiton, not in the research. This year, I find Google Reasearch have implemented many research papers using TF 2.X, I think it is the right time to use TF 2.X in the research now.
 
-In 
+In TF 2.X, the simplest way to for using TPU is using ' model.fit() ' in the training process. You can also write your custom training loop. Here are some useful examples:
+ 'model.fit()':(https://www.tensorflow.org/text/tutorials/bert_glue), (https://github.com/huggingface/transformers/blob/master/examples/tensorflow/text-classification/run_glue.py)
+  Custom training loop: (https://github.com/tensorflow/models/blob/e3c7e300866dcb7d1ff020c18daababbdc232711/official/nlp/bert/model_training_utils.py), it is  used in (https://github.com/tensorflow/models/blob/e3c7e300866dcb7d1ff020c18daababbdc232711/official/nlp/bert/run_squad_helper.py)
+
+When using TPU in TF 2.X, please keep in mind that:
+ * Every input sequence should be the same length.
+ * Don't use ' tf.keras.layers.Embedding ', please refer to [HuggingFace TFBertEmbeddings](https://github.com/huggingface/transformers/blob/master/src/transformers/models/bert/modeling_tf_bert.py#L132).
+
+### Pytorch
+You can use TPU by [torch_xla package](https://github.com/pytorch/xla) or [accelerate](https://huggingface.co/docs/accelerate/):
+ torch_xla: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix ‘no_trainer', such as 'run_glue.py'
+ accelerate: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix ‘no_trainer', such as 'run_glue_no_trainer.py'
+Also, in Pytorch, every input sequence should be the same length. 
+
+###  JAX/Flax
+I am studying about it now, I find many researchers in Google and HuggingFace are using it. HuggingFace also have some [examples](https://github.com/huggingface/transformers/tree/master/examples/flax) about it.
+
