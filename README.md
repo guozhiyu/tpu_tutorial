@@ -17,7 +17,7 @@ I find there are five feasible ways:
  * Apply for [Google Cloud Research Credits](https://edu.google.com/programs/credits/research/?modal_active=none) (only for doctoral students).
 
 ## Code example
-Actually, you can choose TF, Pytorch, and JAX/Flax for using TPU, I prefer TF 2.X, I will show some useful code examples for TF 2.X and Pytorch. If you use TPU in Google Cloud Platform, please read the [Cloud TPU document] (https://cloud.google.com/tpu/docs) at first. It is highly recommended to use the newly released [TPU Virtual Machine](https://cloud.google.com/blog/products/compute/introducing-cloud-tpu-vms).
+Actually, you can choose TF, Pytorch, and JAX/Flax for using TPU, I prefer TF 2.X, I will show some useful code examples for TF 2.X and Pytorch. If you use TPU in Google Cloud Platform, please read the [Cloud TPU document](https://cloud.google.com/tpu/docs) at first. It is highly recommended to use the newly released [TPU Virtual Machine](https://cloud.google.com/blog/products/compute/introducing-cloud-tpu-vms).
 
 ### TF 2.X
 When I started to use TPU, it was the summer of 2019, I could use TPU only in TF 1.X, I just tried to run the fine-tuning code in BERT/XLNET official repository. I found it was really hard to use TPU in TF 1.X. Fortunately, at the end of 2019, TPU support for TF 2.X was released, it became easy to use TPU. Since TF 2.X was just released, it was unstable, I just used it in the Kaggle competition, not in the research. This year, I find Google Research has implemented many research papers using TF 2.X, I think it is the right time to use TF 2.X in the research now.
