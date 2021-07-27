@@ -14,7 +14,7 @@ I find there are five feasible ways:
  * (Highly recommended) Participate in the competition organized by Google. (I participated in a Kaggle competition organized by Google in Dec 2019, after the competition, I can use TPU freely in my own research, I can still use it now, I can run up to 5 TPU-v3 at the same time).
  * Use the free TPU in Colab/Kaggle notebook.
  * Use Google Cloud 300$ free trial (If you are a new customer of Google Cloud)
- * Apply for [Google Cloud Research Credits](https://edu.google.com/programs/credits/research/?modal_active=none) (only for doctoral students).
+ * Apply for [Google Cloud Research Credits](https://edu.google.com/programs/credits/research/?modal_active=none) (1000$ GCP credits, only for doctoral students).
 
 ## Code example
 Actually, you can choose TF, Pytorch, and JAX/Flax for using TPU, I prefer TF 2.X, I will show some useful code examples for TF 2.X and Pytorch. If you use TPU in Google Cloud Platform, please read the [Cloud TPU document](https://cloud.google.com/tpu/docs) at first. It is highly recommended to use the newly released [TPU Virtual Machine](https://cloud.google.com/blog/products/compute/introducing-cloud-tpu-vms).
@@ -23,8 +23,8 @@ Actually, you can choose TF, Pytorch, and JAX/Flax for using TPU, I prefer TF 2.
 When I started to use TPU, it was the summer of 2019, I could use TPU only in TF 1.X, I just tried to run the fine-tuning code in BERT/XLNET official repository. I found it was really hard to use TPU in TF 1.X. Fortunately, at the end of 2019, TPU support for TF 2.X was released, it became easy to use TPU. Since TF 2.X was just released, it was unstable, I just used it in the Kaggle competition, not in the research. This year, I find Google Research has implemented many research papers using TF 2.X, I think it is the right time to use TF 2.X in the research now.
 
 In TF 2.X, the simplest way to for using TPU is using the `model.fit() ` in the training process. You can also write your custom training loop. Here are some useful examples:
- 'model.fit()':(https://www.tensorflow.org/text/tutorials/bert_glue), (https://github.com/huggingface/transformers/blob/master/examples/tensorflow/text-classification/run_glue.py)
-  Custom training loop: (https://github.com/tensorflow/models/blob/e3c7e300866dcb7d1ff020c18daababbdc232711/official/nlp/bert/model_training_utils.py), it is  used in (https://github.com/tensorflow/models/blob/e3c7e300866dcb7d1ff020c18daababbdc232711/official/nlp/bert/run_squad_helper.py)
+ * `model.fit()`:(https://www.tensorflow.org/text/tutorials/bert_glue), (https://github.com/huggingface/transformers/blob/master/examples/tensorflow/text-classification/run_glue.py)
+ * Custom training loop: (https://github.com/tensorflow/models/blob/e3c7e300866dcb7d1ff020c18daababbdc232711/official/nlp/bert/model_training_utils.py), it is  used in (https://github.com/tensorflow/models/blob/e3c7e300866dcb7d1ff020c18daababbdc232711/official/nlp/bert/run_squad_helper.py)
 
 When using TPU in TF 2.X, please keep in mind that:
  * Every input sequence should be the same length.
@@ -36,9 +36,9 @@ Some papers of Google Research that have used TPU in TF 2.X:
  * [Big Bird: Transformers for Longer Sequences](https://github.com/google-research/bigbird).
 ### Pytorch
 You can use TPU by [torch_xla package](https://github.com/pytorch/xla) or [accelerate](https://huggingface.co/docs/accelerate/):
+* torch_xla: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix `no_trainer`, such as `run_glue.py`.
+* accelerate: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) with suffix `no_trainer`, such as `run_glue_no_trainer.py`
 
- torch_xla: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix `no_trainer`, such as `run_glue.py`.
- accelerate: All examples in [Huggingface Pytorch examples](https://github.com/huggingface/transformers/tree/master/examples/pytorch) without suffix `no_trainer`, such as `run_glue_no_trainer.py`
 Also, in Pytorch, every input sequence should be the same length. 
 
 ###  JAX/Flax
